@@ -12,7 +12,7 @@ type App struct {
 	User *User
 }
 
-// NewApp creates a new App application struct
+// NewApp creates a new App application struct 
 func NewApp() *App {
 	return &App{}
 }
