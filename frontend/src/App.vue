@@ -1,20 +1,16 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import SideBar from "./components/sidebar/SideBar.vue";
-import Signup from "./components/Signup.vue";
 import {
     NConfigProvider,
     NLayout,
     NLayoutContent,
     NLayoutFooter,
-    NLayoutHeader,
     NMessageProvider,
     NNotificationProvider,
     NModalProvider
 } from "naive-ui";
 import Notification from "./components/Notification.vue";
 
-import ThemeSwitch from "./components/ThemeSwitch.vue";
 
 // theme store
 import { useThemeStore } from "./stores/theme";
@@ -37,8 +33,13 @@ const themeStore = useThemeStore()
                         <!-- another layout wrapper -->
                         <NLayout>
                             <MainHeader/>
-                            
-                            <NLayoutContent> <Signup /> </NLayoutContent>
+
+                            <!-- content goes here acts as a page -->
+                            <NLayoutContent>
+                                 
+                                <RouterView/>
+
+                            </NLayoutContent>
 
                             <NLayoutFooter>
                                 <Notification />

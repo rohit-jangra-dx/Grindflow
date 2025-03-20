@@ -4,6 +4,7 @@ import { MenuOption, NButton, NIcon, NMenu } from 'naive-ui';
 import { h, ref } from 'vue';
 import { DashboardCustomizeOutlined, PendingActionsFilled, ScheduleFilled, WorkOutlineRound, AddRound } from '@vicons/material'
 import { Dashboard, TagGroup } from '@vicons/carbon'
+import { RouterLink } from 'vue-router';
 
 
 const { collapsed } = defineProps<{ collapsed: boolean }>()
@@ -14,22 +15,22 @@ console.log(collapsed)
 // FIXME: correctly setup the menu options
 const menuOptions: MenuOption[] = [
     {
-        label: "Dashboard",
+        label: () => h(RouterLink, { to: '/', style: 'text-decoration:none, color: inherit;' }, 'Dashboard'),
         icon: () => h(NIcon, null, { default: () => h(Dashboard) }),
         key: "dashboard"
     },
     {
-        label: "Plan",
+        label: () => h(RouterLink, { to: '/plan', style: 'text-decoration:none, color: inherit;' }, 'Plan'),
         key: "plan",
         icon: () => h(NIcon, null, { default: () => h(PendingActionsFilled) }),
     },
     {
-        label: "Schedule",
+        label: () => h(RouterLink, { to: '/schedule', style: 'text-decoration:none, color: inherit;' }, 'Schedule'),
         key: "schedule",
         icon: () => h(NIcon, null, { default: () => h(ScheduleFilled) }),
     },
     {
-        label: "Boards",
+        label: () => h(RouterLink, { to: '/boards', style: 'text-decoration:none, color: inherit;' }, 'Boards'),
         key: "boards",
         icon: () => h(NIcon, null, { default: () => h(DashboardCustomizeOutlined) }),
     },
@@ -57,7 +58,7 @@ const menuOptions: MenuOption[] = [
                 key: 'v'
             }
         ],
-        
+
     },
     {
         label: "Tags",
@@ -81,7 +82,8 @@ const menuOptions: MenuOption[] = [
 </script>
 
 <template>
-    <NMenu :collapsed="collapsed" style="padding-top: 10px;" :options="menuOptions" :collapsed-width="64" :collapsed-icon-size="22" />
+    <NMenu :collapsed="collapsed" style="padding-top: 10px;" :options="menuOptions" :collapsed-width="64"
+        :collapsed-icon-size="22" />
 
 </template>
 
